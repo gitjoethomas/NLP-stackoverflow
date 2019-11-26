@@ -19,7 +19,7 @@ def remove_html(cell):
     """takes out html tags and NLTK stopwords from a block of text. call with .apply()"""
     
     # BeautifulSoup will parse out html tags
-    clean = BeautifulSoup(cell, "html5").get_text() 
+    clean = BeautifulSoup(cell, features="html5lib").get_text() 
     no_delimiters = clean.replace("\n", "")
         
     return no_delimiters
