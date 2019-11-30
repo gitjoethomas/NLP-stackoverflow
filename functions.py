@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import nltk
 import pandas as pd
+import numpy as np
 
 
 def find_number_answers(answers_df):
@@ -33,7 +34,6 @@ def remove_stopwords(cell):
     try:
         no_stopwords = "".join(w+" " for w in nltk.word_tokenize(cell) 
                            if not w.lower() in nltk.corpus.stopwords.words('english'))
-    except Exception:
-        print("cell is: "+str(cell))
-        raise Exception
+    except TypeError:
+        return np.nan
     return no_stopwords
